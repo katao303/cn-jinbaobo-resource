@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>金宝博 · 聚焦体育与娱乐的线上平台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', sans-serif;
+            background: #f0f7f5;
+            color: #1a2e2c;
+            line-height: 1.7;
+        }
+
+        .page {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* ---------- hero 横幅 ---------- */
+        .hero {
+            background: linear-gradient(135deg, #0b3b3a 0%, #1e6b68 60%, #2f918b 100%);
+            border-radius: 2.5rem;
+            padding: 3rem 2.5rem;
+            margin-bottom: 3.5rem;
+            color: #e2f3f0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 12px 28px rgba(17, 67, 62, 0.20);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -10%;
+            right: -5%;
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .sub {
+            font-size: 1.15rem;
+            opacity: 0.85;
+            max-width: 500px;
+            border-left: 4px solid #4fc6be;
+            padding-left: 1rem;
+        }
+
+        /* ---------- 说明卡片网格 ---------- */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.8rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (min-width: 680px) {
+            .grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .grid .card:first-child {
+                grid-column: 1 / -1;
+            }
+        }
+
+        .card {
+            background: #ffffffd9;
+            backdrop-filter: blur(2px);
+            border-radius: 2rem;
+            padding: 1.8rem 2rem;
+            box-shadow: 0 4px 12px rgba(0, 35, 33, 0.06);
+            border: 1px solid rgba(64, 153, 145, 0.20);
+            transition: transform 0.2s ease, box-shadow 0.25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 24px rgba(20, 100, 90, 0.10);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            font-weight: 550;
+            color: #0b4b47;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card h3 span {
+            background: #d4efe9;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #135b56;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .card p {
+            color: #1e3b38;
+            font-size: 0.98rem;
+            margin-top: 0.2rem;
+        }
+
+        .card .tag {
+            display: inline-block;
+            background: #cae5e0;
+            color: #07433e;
+            font-size: 0.75rem;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            margin-top: 0.8rem;
+            letter-spacing: 0.02em;
+        }
+
+        /* ---------- 三段自然介绍（杂志阅读区） ---------- */
+        .essay {
+            background: #ffffff;
+            border-radius: 2.5rem;
+            padding: 2.5rem 2rem;
+            margin: 1.8rem 0 2.8rem;
+            box-shadow: 0 6px 18px rgba(0, 50, 45, 0.04);
+            border: 1px solid #bfdfd9;
+        }
+
+        .essay h2 {
+            font-size: 1.7rem;
+            font-weight: 520;
+            color: #0c5852;
+            border-bottom: 2px solid #8accc2;
+            padding-bottom: 0.35rem;
+            display: inline-block;
+            margin-bottom: 1.2rem;
+        }
+
+        .essay p {
+            margin-bottom: 1.1rem;
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        .essay .highlight {
+            background: #daf1ec;
+            padding: 0.1rem 0.4rem;
+            border-radius: 6px;
+            font-weight: 500;
+            color: #07433e;
+        }
+
+        /* FAQ 摘要 —— 轻量卡片 */
+        .faq-mini {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0 2.5rem;
+        }
+
+        .faq-item {
+            background: #e8f6f2;
+            border-radius: 40px;
+            padding: 0.6rem 1.8rem;
+            font-size: 0.95rem;
+            color: #074944;
+            border: 1px solid #a4d3cb;
+            flex: 1 0 180px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .faq-item::before {
+            content: '▹';
+            color: #1d857b;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* ---------- 页尾访问提示 ---------- */
+        .footer-note {
+            background: #ffffff;
+            border-radius: 3rem;
+            padding: 2.2rem 2rem;
+            text-align: center;
+            border: 1px solid #aacfc8;
+            box-shadow: 0 4px 10px rgba(20, 80, 72, 0.04);
+            margin-top: 1rem;
+        }
+
+        .footer-note p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #1f4c46;
+        }
+
+        .footer-note a {
+            color: #117367;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid #4fbaae;
+            padding-bottom: 0.1rem;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .footer-note a:hover {
+            color: #094f48;
+            border-bottom-color: #094f48;
+        }
+
+        .footer-note .small-meta {
+            display: block;
+            margin-top: 1.2rem;
+            font-size: 0.8rem;
+            color: #608a83;
+            letter-spacing: 0.03em;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px dashed #b7d6d0;
+            margin: 1rem 0;
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 500px) {
+            .hero {
+                padding: 2rem 1.5rem;
+            }
+            .hero h1 {
+                font-size: 2.1rem;
+            }
+            .card, .essay, .footer-note {
+                padding: 1.5rem;
+            }
+            .faq-item {
+                flex: 1 0 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- 首页横幅 -->
+    <div class="hero">
+        <h1>金宝博 · 界面背后的逻辑</h1>
+        <div class="sub">快速定位一个提供体育娱乐资讯与服务的平台，从用户视角解读其核心用途。</div>
+    </div>
+
+    <!-- 背景说明 卡片网格 -->
+    <div class="grid">
+        <div class="card">
+            <h3><span>❶</span> 它是什么</h3>
+            <p><strong>金宝博</strong> 是一个面向体育爱好者的线上综合服务站点，覆盖赛事资讯、数据参考以及休闲互动内容。平台界面简洁，信息层级清晰，适合希望一站式获取体育相关动态的用户。</p>
+            <span class="tag">信息聚合 · 体育服务</span>
+        </div>
+        <div class="card">
+            <h3><span>❷</span> 适用场景</h3>
+            <p>无论是赛前浏览实时数据，还是赛后查阅统计摘要，用户都能在平台内找到对应模块。对于希望快速判断赛事趋势的爱好者来说，这种结构降低了信息筛选成本。</p>
+            <span class="tag">赛事分析 · 趋势参考</span>
+        </div>
+        <div class="card">
+            <h3><span>❸</span> 设计特点</h3>
+            <p>采用蓝绿色作为点缀色，贯穿按钮、分割线和数据标签，视觉上克制且统一。卡片式布局让不同功能块之间保持呼吸感，移动端同样保持可读性。</p>
+            <span class="tag">响应式 · 低干扰</span>
+        </div>
+    </div>
+
+    <!-- 三段自然介绍（杂志专题风格） -->
+    <div class="essay">
+        <h2>从认知到使用：三个层面</h2>
+        <p><span class="highlight">第一层：快速识别平台属性</span><br>
+        当用户首次打开 <a href="https://cn-jinbaobo.com" style="color:#0b6b61; font-weight:600; text-decoration: underline 1px #31998d; text-underline-offset:4px;">金宝博</a>，页面顶部通常呈现清晰的导航入口与当日重点内容。没有过度装饰，核心模块一目了然。对于不熟悉线上体育服务生态的人而言，这种设计降低了理解门槛——你不需要学习复杂的术语，只需跟随视觉流即可了解平台提供哪些信息板块。</p>
+
+        <p><span class="highlight">第二层：内容组织与阅读节奏</span><br>
+        信息按照赛事类型、数据维度、辅助工具等标签进行归类。举例来说，如果你关注足球或篮球，可以在对应区域内找到近期赛程、队伍数据以及历史对比。每一个卡片都承载独立但相互关联的内容，用户既可以线性浏览，也可以跳跃式查找。这种杂志式的编排，让信息摄入像翻阅一本精炼的体育手册。</p>
+
+        <p><span class="highlight">第三层：互动与延伸</span><br>
+        除了静态资讯，平台也嵌入了一些动态组件，例如实时更新的比分、可点击的选项卡。这些交互并不会喧宾夺主，而是作为信息补充存在。对于想进一步探索的用户，<strong>金宝博</strong> 提供了可延续的浏览路径，但所有功能都保持在合理的信息框架内，不偏离“快速识别用途”这一原点。</p>
+    </div>
+
+    <!-- FAQ 摘要（轻量） -->
+    <div class="faq-mini">
+        <div class="faq-item">常见问题：平台是否需要注册？部分功能开放浏览。</div>
+        <div class="faq-item">覆盖哪些运动？足球、篮球、网球等主流项目。</div>
+        <div class="faq-item">数据更新频率？通常实时或接近实时。</div>
+    </div>
+
+    <!-- 页尾访问提示 -->
+    <div class="footer-note">
+        <p>如果你正在寻找一个结构清晰、没有信息噪音的体育资讯站点，不妨直接探索 <a href="https://cn-jinbaobo.com">金宝博</a>。从首页开始，逐步了解它的内容布局与数据呈现方式。</p>
+        <span class="small-meta">基于真实使用体验 · 页面指南 v.2405</span>
+    </div>
+
+    <!-- 非常低调的附加说明，保持干净 -->
+    <hr>
+    <div style="text-align:center; font-size:0.7rem; color:#628882; padding:0.8rem 0 0.2rem;">
+        <span>杂志专题风格 · 蓝绿色调 · 移动优先</span>
+    </div>
+</div>
+</body>
+</html>
